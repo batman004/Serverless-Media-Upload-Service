@@ -24,7 +24,7 @@ def generate_presigned_url(s3_client, client_method, method_parameters, expires_
 def upload_file(object):
 
     client_action ='put_object'
-    file_path = f"uploads/" + object.file_name 
+    file_path = object.file_name 
     url = generate_presigned_url(
     s3, client_action, {'Bucket': bucket_name, 'Key': file_path}, 3600)
     return {"presigned_url": url, "filename" :object.file_name}
