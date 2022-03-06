@@ -27,3 +27,7 @@ A demo media storage webapp to explore AWS services like S3, Lambda and add CI/C
     ├── index.html
     └── upload.js
 ```
+
+### High-Level System Design
+
+![System Design](https://user-images.githubusercontent.com/58564635/156899246-80606234-1c13-4062-8d76-7cb181078121.png)
