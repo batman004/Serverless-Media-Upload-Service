@@ -18,7 +18,7 @@ def test_presigned_url(file="test.txt"):
     return res['presigned_url']
 
 def test_upload(url=test_presigned_url()):
-    path ="test.txt"
+    path ="app/tests/test.txt"
     with open(f"{path}", 'r') as f:
         content = f.read()
     response = client.put(url, data=content)

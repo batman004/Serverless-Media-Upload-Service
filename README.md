@@ -1,14 +1,13 @@
 # Media-Storage-Service
 
 ### About
-A demo media storage webapp to explore AWS services like S3, Lambda and add CI/CD with Github Actions
+A demo media storage webapp to explore and learn about AWS services like S3, Lambda and add CI/CD with Github Actions
 
 ### DIR Structure 
 ```
 ├── LICENSE
 ├── README.md
-├── app
-│   ├── __init__.py
+├── app   
 │   ├── api
 │   │   ├── __init__.py
 │   │   ├── endpoint
@@ -22,10 +21,20 @@ A demo media storage webapp to explore AWS services like S3, Lambda and add CI/C
 │   ├── main.py
 │   └── tests
 │       ├── __init__.py
-│       └── test.py
-└── frontend
-    ├── index.html
-    └── upload.js
+│       ├── test.txt
+│       └── test_main.py
+├── frontend
+│   ├── assets
+│   │   ├── css
+│   │   │   └── styles.css
+│   │   └── media
+│   │       └── logo.png
+│   ├── js
+│   │   └── upload.js
+│   └── templates
+│       ├── index.html
+│       └── signup.html
+└── requirements.txt
 ```
 
 ### High-Level System Design

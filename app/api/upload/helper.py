@@ -13,7 +13,7 @@ def generate_presigned_url(s3_client, client_method, method_parameters, expires_
             Params=method_parameters,
             ExpiresIn=expires_in
         )
-        print(f"Got presigned URL: {url}")
+        print("Got presigned URL")
     except ClientError:
         print(
             f"Couldn't get a presigned URL for client method {client_method}")
