@@ -44,6 +44,11 @@ jobs:
 
       - name: Run Tests   
         run: . venv/bin/activate && pytest
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          
       - name: Create archive of dependencies
       # CD into Python site packages folder and 
       # zip up the contents into the root of the project.
