@@ -9,6 +9,17 @@ def test_main_resource():
     assert response_auth.status_code == 200
 
 
-def test_upload_service():
-    response_auth = client.get(f"/api/upload")
-    assert response_auth.status_code == 200
+def test_presigned_url(file="test.txt"):
+    response = client.post(f"/api/upload",
+            headers={"Content-Type": "application/json"},
+            json={"file_name": f"{file}"})
+    return response['presigned_url']
+
+def test_upload(url=test_presigned_url()):
+    path ="app/tests/test.txt"
+    with open(f"{path}", 'r') as f:
+        content = f.read()
+    response = client.put(url, data=content)
+    assert "Got response:"
+    assert f"Status: {response.status_code}"
+
