@@ -1,8 +1,8 @@
 import uvicorn
 from fastapi import FastAPI
 from mangum import Mangum
-
-from api.endpoint.router import router as upload_router
+from config import settings 
+from api.endpoints.router import router as upload_router
 
 app = FastAPI()
 
@@ -17,6 +17,11 @@ async def startup_db_client():
   #initiate mangum obj for AWS
   handler = Mangum(app=app)
 
+if __name__ == "__main__":
+    uvicorn.run(
+        "main:app",
+        reload=settings.DEBUG_MODE
+    )
 
 
 
