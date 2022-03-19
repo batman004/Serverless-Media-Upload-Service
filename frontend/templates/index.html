@@ -19,7 +19,6 @@
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                 Media Upload Service
-                <img src="../assets/media/logo.png" alt="" width="25" height="24" class="d-inline-block align-text-top">
               <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
             </a>
     
@@ -36,21 +35,6 @@
         </div>
       </header>
 
-      <div id="app">
-        <h1>S3 Uploader Test</h1>
-    
-        <div v-if="!image">
-          <h2>Select an image</h2>
-          <input type="file" @change="onFileChange">
-        </div>
-        <div v-else>
-          <img :src="image" />
-          <button v-if="!uploadURL" @click="removeImage">Remove image</button>
-          <button v-if="!uploadURL" @click="uploadImage">Upload image</button>
-        </div>
-        <h2 v-if="uploadURL">Success! Image uploaded to bucket.</h2>
-
-      
         
 </body>
 </html>

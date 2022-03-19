@@ -4,6 +4,9 @@ from dotenv import dotenv_values
 import os
 config = dotenv_values(".env")
 
+os.environ['AWS_ACCESS_KEY_ID'] = config['AWS_ACCESS_KEY_ID']
+os.environ['AWS_SECRET_ACCESS_KEY'] = config['AWS_SECRET_ACCESS_KEY']
+
 bucket_name = "backend-lambda-bucket"
 
 my_config = Config(

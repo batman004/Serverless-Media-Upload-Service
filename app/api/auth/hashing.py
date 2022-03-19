@@ -5,3 +5,4 @@ class Hash():
       return pwd_cxt.hash(password)
    def verify(hashed,normal):
       return pwd_cxt.verify(normal,hashed)
+
