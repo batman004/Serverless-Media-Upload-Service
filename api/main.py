@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from mangum import Mangum
 from motor.motor_asyncio import AsyncIOMotorClient
-from config import settings 
+from api.config import settings 
 from api.endpoints.router import router as upload_router
 
 app = FastAPI()
