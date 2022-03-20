@@ -22,17 +22,22 @@ A highly optimized media upload web-service which increases upload speeds and re
 
 #### Steps to run
 
-* Clone this repository locally by opening up your terminal and running the command ```
+* Clone this repository locally by opening up your terminal and running the command 
+
+```
 git clone https://github.com/batman004/Media-Storage-Service.git
 ``` 
 * CD into the project folder and create a virtual environment by executing 
+
 ```
 virtualenv env
 ```
 * Next install all the dependencies by running 
+
 ```
 pip install -r requirements.txt
 ```
+
 * Fill in the environement secrets :
     create a file called `.env` at the root of the app DIR and fill in the following values
 
@@ -45,7 +50,8 @@ DB_NAME =
 JWT_SECRET_KEY = 
 ALGORITHM = HS256
 ```
-* now cd into the app folder and run the api with `python main.py` which will spin up a uvicorn sever which listens to requests on `port 8000`
+* now cd into the app folder and run the api with `python main.py` which will spin up a uvicorn sever which listens to requests on 
+```port:8000```
 * Go to `http://localhost:8000/docs` to see the automated swagger docs and explore the API endpoints
 
 ### DIR Structure 
