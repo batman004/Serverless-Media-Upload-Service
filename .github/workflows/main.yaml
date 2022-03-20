@@ -50,6 +50,8 @@ jobs:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
           DB_URL: ${{ secrets.DB_URL }}
           DB_NAME: ${{ secrets.DB_NAME }}
+          JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+          ALGORITHM: ${{ SECRETS.ALGORITHM }}
           
       - name: Create archive of dependencies
       # CD into Python site packages folder and 
@@ -90,7 +92,8 @@ jobs:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
           DB_URL: ${{ secrets.DB_URL }}
           DB_NAME: ${{ secrets.DB_NAME }}
-          
+          JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+          ALGORITHM: ${{ SECRETS.ALGORITHM }}
       - name: Deploy new Lambda
         run: aws lambda update-function-code --function-name UploadHandler --s3-bucket backend-lambda-bucket --s3-key api.zip
         env:
@@ -99,4 +102,6 @@ jobs:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
           DB_URL: ${{ secrets.DB_URL }}
           DB_NAME: ${{ secrets.DB_NAME }}
+          JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+          ALGORITHM: ${{ SECRETS.ALGORITHM }}
           
