@@ -6,8 +6,8 @@ class CommonSettings(BaseSettings):
     APP_NAME: str = "Media Upload Service"
     DEBUG_MODE: bool = True
 class DatabaseSettings(BaseSettings):
-    DB_URL: str = config['DB_URL']
-    DB_NAME: str = config['DB_NAME'] 
+    DB_URL: str = os.getenv['DB_URL']
+    DB_NAME: str = os.getenv['DB_NAME'] 
 
 class ServerSettings(BaseSettings):
     HOST: str = "localhost"
