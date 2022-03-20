@@ -12,13 +12,13 @@ from ..auth.auth_handler import signJWT
 router = APIRouter()
 
 # generate pre-signed url
-@router.post("/upload", dependencies=[Depends(JWTBearer())], response_description="get the pre-signed url")
+@router.post("/service/upload", dependencies=[Depends(JWTBearer())], response_description="get the pre-signed url")
 async def handle_upload_put(file: UploadFile):
   uploaded = upload_file(file)
   return uploaded
 
 # login + get token
-@router.post("/auth/token")
+@router.post("/auth/login")
 async def login_for_access_token(request: Request, user_to_login: Login):
     user = await check_user(request, user_to_login)
     await request.app.mongodb["users"].update_one(
