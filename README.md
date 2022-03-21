@@ -1,12 +1,31 @@
-# Media-Upload-Service
+# Serverless-Media-Upload-Service
 
 ### About
 A highly optimized media upload web-service which increases upload speeds and reduces throttling while handling multiple API requests.
 
+### Motivation
+
+Typically, in a server-based environment, the process of uploading media is as follows:
+
+![](https://user-images.githubusercontent.com/58564635/159216309-71b205b5-297b-4f46-86c9-544f6f3a6f83.png)
+
+
+While the procedure is straightforward, it can have a considerable impact on the web server's speed in high-volume applications. Because media uploads are often huge, they can consume a significant amount of network I/O and server CPU time. You must also keep track of the transfer's progress to verify that the entire item is uploaded successfully, as well as retries and mistakes. If thousands of users attempt to upload media around the same time, this requires you to scale out the application server and ensure that there is sufficient network bandwidth available.
+
+### Methodology
+
+- **Directly publishing files to Amazon S3** can help your application server manage additional requests during busy moments by **reducing network traffic and server CPU use**. S3 is also extremely accessible and long-lasting, making it an excellent long-term storage option for user uploads.
+
+- This is primarily achieved by transferring the upload latency dependency completely on the client side. I have used a [Pre-Signed URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html) recieved from the S3 Bucket which allows public read/write access to it. 
+Once the client recieves the Pre-signed URL, they can run a script to upload the desired files without any permissions. This is why protecting the `api/services/upload` endpoint is of great importance.
+I have used JWT tokens which would be required as a part of the headers while sending an upload request to the server to verify a given user, apart from getting authenticated by querying user data from a database.
+
+- Another reason why I call this service optimized is that I have tried to mitigate issues such as API throttling and slow response times by deploying my API as an edge function through AWS Lambda. this was 
+
 ### Tools and Technologies used
 
-- Python (FastAPI) to write the API 
-- AWS Lambda to allow auto-scaling and load balancing
+- Python (FastAPI) to write the REST-API 
+- AWS Lambda for deploying our API and to allow auto-scaling and load balancing
 - AWS API Gateway to expose the Lambda function via a known URL
 - AWS S3 Bucket as storage for media
 - HTML, CSS and JavaScript to create a simple UI, add styling and run client side scripts respectively
