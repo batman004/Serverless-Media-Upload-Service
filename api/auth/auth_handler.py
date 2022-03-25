@@ -1,10 +1,12 @@
 import time
 from typing import Dict
 import jwt
-from dotenv import dotenv_values
-config = dotenv_values(".env")
-JWT_SECRET = config["JWT_SECRET_KEY"]
-JWT_ALGORITHM = config["ALGORITHM"]
+import os
+# from dotenv import dotenv_values
+# config = dotenv_values(".env")
+
+JWT_SECRET = os.getenv["JWT_SECRET_KEY"]
+JWT_ALGORITHM = os.getenv["ALGORITHM"]
 
 
 def token_response(token: str):
