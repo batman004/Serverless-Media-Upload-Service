@@ -50,6 +50,10 @@ git clone https://github.com/batman004/Media-Storage-Service.git
 
 ```
 virtualenv env
+
+# activate the env
+source env/bin/activate (Linux/MacOS)
+env\Scripts\activate (Windows)
 ```
 * Next install all the dependencies by running 
 
