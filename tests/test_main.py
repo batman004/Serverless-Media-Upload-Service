@@ -10,7 +10,7 @@ def test_main_resource():
 
 def test_presigned_url(file="test.txt"):
     response = client.post(
-            f"/api/upload/",
+            f"api/service/upload",
             headers={"Content-Type": "application/json"},
             json={"file_name": f"{file}"},
         )
@@ -18,7 +18,7 @@ def test_presigned_url(file="test.txt"):
     return res['presigned_url']
 
 def test_upload(url=test_presigned_url()):
-    path ="app/tests/test.txt"
+    path ="tests/test.txt"
     with open(f"{path}", 'r') as f:
         content = f.read()
     response = client.put(url, data=content)
