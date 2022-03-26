@@ -2,6 +2,7 @@
 
 ### About
 A highly optimized media upload web-service which increases upload speeds and reduces throttling while handling multiple API requests.
+(see [System Design](#high-level-system-design) below) 
 
 ### Motivation
 
@@ -104,6 +105,6 @@ ALGORITHM = HS256
     └── test_main.py
 ```
 
-### High-Level System Design
+### High Level System Design
 
 ![System Design](https://user-images.githubusercontent.com/58564635/159136643-81b1559e-ec96-408d-97e4-fbeb69a8ed5d.png)
