@@ -1,7 +1,7 @@
 # Serverless-Media-Upload-Service
 
 ### About
-A highly optimized media upload web-service which increases upload speeds and reduces throttling while handling multiple API requests.
+A highly optimized media upload web-service which increases upload speeds and reduces latency while handling multiple API requests.
 (see [System Design](#high-level-system-design) below) 
 
 ### Motivation
