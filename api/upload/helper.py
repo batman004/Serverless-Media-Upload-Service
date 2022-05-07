@@ -1,6 +1,7 @@
 import boto3
 from botocore.exceptions import ClientError
-
+import logging
+log = logging.getLogger("my-logger")
 from .config import s3, bucket_name
 
 def generate_presigned_url(s3_client, client_method, method_parameters, expires_in):
@@ -13,7 +14,7 @@ def generate_presigned_url(s3_client, client_method, method_parameters, expires_
             Params=method_parameters,
             ExpiresIn=expires_in
         )
-        print("Got presigned URL")
+        log.info("Got presigned URL")
     except ClientError:
         print(
             f"Couldn't get a presigned URL for client method {client_method}")

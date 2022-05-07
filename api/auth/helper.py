@@ -1,5 +1,5 @@
 from fastapi import Request, HTTPException, status
-from ..endpoints.models import Login
+from endpoints.models import Login
 from .hashing import Hash
 
 async def check_user(request: Request, user_to_login: Login):
