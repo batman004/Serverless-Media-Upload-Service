@@ -1,7 +1,5 @@
 from pydantic import BaseSettings
-from dotenv import dotenv_values
-
-config = dotenv_values(".env")
+import os
 
 
 class CommonSettings(BaseSettings):
@@ -10,8 +8,8 @@ class CommonSettings(BaseSettings):
 
 
 class DatabaseSettings(BaseSettings):
-    DB_URL: str = config['DB_URL']
-    DB_NAME: str = config['DB_NAME']
+    DB_URL: str = os.environ['DB_URL']
+    DB_NAME: str = os.environ['DB_NAME']
 
 
 class ServerSettings(BaseSettings):
@@ -19,12 +17,7 @@ class ServerSettings(BaseSettings):
     PORT: int = 8000
 
 
-class JWTSettings(BaseSettings):
-    JWT_SECRET: str = config['JWT_SECRET_KEY']
-    JWT_ALGORITHM: str = config['JWT_ALGORITHM']
-
-
-class Settings(CommonSettings, ServerSettings, DatabaseSettings, JWTSettings):
+class Settings(CommonSettings, ServerSettings, DatabaseSettings):
     pass
 
 
