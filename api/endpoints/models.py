@@ -2,8 +2,10 @@ import uuid
 from pydantic import BaseModel, Field
 from typing import Optional
 
+
 class UploadFile(BaseModel):
-  file_name: str
+    file_name: str
+
 
 class User(BaseModel):
     id: str = Field(default_factory=uuid.uuid4, alias="_id")
@@ -40,6 +42,7 @@ class Login(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+
 
 class TokenData(BaseModel):
     username: Optional[str] = None

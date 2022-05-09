@@ -2,11 +2,11 @@ from fastapi import APIRouter, Depends, Request, status
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from .models import UploadFile, User, Login
-from upload.helper import upload_file
-from auth.hashing import Hash
-from auth.helper import check_user
-from auth.auth_bearer import JWTBearer
-from auth.auth_handler import signJWT
+from ..upload.helper import upload_file
+from ..auth.hashing import Hash
+from ..auth.helper import check_user
+from ..auth.auth_bearer import JWTBearer
+from ..auth.auth_handler import signJWT
 
 # router object for handling api routes
 router = APIRouter()
