@@ -8,8 +8,8 @@ class CommonSettings(BaseSettings):
 
 
 class DatabaseSettings(BaseSettings):
-    DB_URL: str = os.getenv['DB_URL']
-    DB_NAME: str = os.getenv['DB_NAME']
+    DB_URL: str = os.environ.get('DB_URL')
+    DB_NAME: str = os.environ.get('DB_NAME')
 
 
 class ServerSettings(BaseSettings):
