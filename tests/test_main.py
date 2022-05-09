@@ -1,6 +1,9 @@
+import os
+
 from fastapi.testclient import TestClient
 from api.main import app
 
+import os
 client = TestClient(app)
 
 
@@ -10,10 +13,26 @@ def test_main_resource():
     assert response_auth.json() == {"message": "welcome to Media-Upload-Service Backend !"}
 
 
-def test_presigned_url(file="test.txt"):
+def get_auth_token():
+    response = client.post(
+        f"api/auth/login",
+        headers={"Content-Type": "application/json"},
+        json={"username": "John",
+              "password": os.getenv['ADMIN_PASSWORD']
+              },
+    )
+
+    res = response.json()
+    return res['access_token']
+
+
+def test_presigned_url(file="test.txt", auth_token=get_auth_token()):
     response = client.post(
         f"api/service/upload",
-        headers={"Content-Type": "application/json"},
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {auth_token}"
+        },
         json={"file_name": f"{file}"},
     )
     res = response.json()

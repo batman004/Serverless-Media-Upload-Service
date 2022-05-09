@@ -8,40 +8,43 @@ from auth.helper import check_user
 from auth.auth_bearer import JWTBearer
 from auth.auth_handler import signJWT
 
-#router object for handling api routes
+# router object for handling api routes
 router = APIRouter()
+
 
 # generate pre-signed url
 @router.post("/service/upload", dependencies=[Depends(JWTBearer())], response_description="get the pre-signed url")
 async def handle_upload_put(file: UploadFile):
-  uploaded = upload_file(file)
-  return uploaded
+    uploaded = upload_file(file)
+    return uploaded
+
 
 # login + get token
 @router.post("/auth/login")
 async def login_for_access_token(request: Request, user_to_login: Login):
     user = await check_user(request, user_to_login)
     await request.app.mongodb["users"].update_one(
-    {"_id": user["_id"]}, {"$set": user}
+        {"_id": user["_id"]}, {"$set": user}
     )
     return signJWT(user["email"])
 
-#logout 
+
+# logout
 @router.post("/auth/logout", dependencies=[Depends(JWTBearer())], response_description="Logout of the app")
 async def logout(username: str, request: Request):
-    user = await request.app.mongodb["users"].find_one({"username":username})
-    user["disabled"]=True
+    user = await request.app.mongodb["users"].find_one({"username": username})
+    user["disabled"] = True
     await request.app.mongodb["users"].update_one(
-    {"_id": user["_id"]}, {"$set": user}
+        {"_id": user["_id"]}, {"$set": user}
     )
-    return{"message":f"user: {username} logged out"}
+    return {"message": f"user: {username} logged out"}
 
 
-#signup
+# signup
 @router.post("/auth/signup", response_description="Signup for a new user")
 async def create_user(request: Request, user: User):
     user = jsonable_encoder(user)
-    user["disabled"]=True
+    user["disabled"] = True
     hashed_pass = Hash.bcrypt(user["password"])
     user["password"] = hashed_pass
     new_user = await request.app.mongodb["users"].insert_one(user)
