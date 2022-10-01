@@ -15,13 +15,13 @@ class User(BaseModel):
     password: str
     disabled: Optional[bool] = None
 
-    class Config:
+    class Config: #configuration schema for the user 
         schema_extra = {
             "example": {
-                "username": "John",
+                "username": "Yuvi",
                 "email": "john@mail.com",
                 "full_name": "John Singh",
-                "password": "myverysecretpassword"
+                "password": "buddhablessedthebeat"
             }
         }
 
@@ -30,16 +30,16 @@ class Login(BaseModel):
     username: str
     password: str
 
-    class Config:
+    class Config: 
         schema_extra = {
             "example": {
-                "username": "John",
-                "password": "myverysecretpassword"
+                "username": "Yuvi",
+                "password": "buddhablessedthebeat"
             }
         }
 
 
-class Token(BaseModel):
+class Token(BaseModel): #tokens for the models created 
     access_token: str
     token_type: str
 
